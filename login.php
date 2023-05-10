@@ -12,7 +12,7 @@
       <input type="text" name="email" placeholder="Enter email address"/>
       <input type="password" name="password" placeholder="Enter password"/>
       <input type="submit" name="submit" value="Login"/>
-      <a href="register.php">Register</a>
+      <a href="registration.php">Register</a>
   </div>
 </body>
 </html>
