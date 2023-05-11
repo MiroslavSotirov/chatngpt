@@ -77,23 +77,33 @@ body {
 
 .chat-form button {
   background: #2ecc71;
-  padding: 5px 15px;
-  font-size: 20px;
+  padding: 8px 15px; /* Increase padding for a larger button */
+  font-size: 18px; /* Slightly reduce font size */
   color: #fff;
   border: none;
-  margin: 0 3px;
   border-radius: 3px;
   box-shadow: 0 3px 0 #27ae60;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.chat-form button:hover {
+  background: #27ae60; /* Darken the background color on hover */
 }
 
 .chat-form .logout_button {
   background: #c87600;
-  padding: 5px 5px;
-  font-size: 20px;
+  padding: 8px 10px; /* Increase padding for a larger button */
+  font-size: 18px; /* Slightly reduce font size */
   color: #fff;
   border: none;
-  margin: 0 2px;
   border-radius: 3px;
   box-shadow: 0 3px 0 #c87600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
   text-decoration: none;
+}
+
+.chat-form .logout_button:hover {
+  background: #b16700; /* Darken the background color on hover */
 }
