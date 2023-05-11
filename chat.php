@@ -1,6 +1,6 @@
 <?php 
   include_once 'db.php';
-  $sql = mysqli_query($con, "SELECT * FROM post ORDER BY id DESC");
+  $sql = mysqli_query($con, "SELECT * FROM post ORDER BY id DESC LIMIT 50");
 
   $chatLogs = array();
 
@@ -18,7 +18,7 @@
 ?>
 
 <div class="chatlogs">
-  <?php foreach (array_reverse($chatLogs) as $log) { ?>
+  <?php foreach ($chatLogs as $log) { ?>
     <div class="chat users">
       <div class="user-photo"><img src="image/<?php echo $log['user_image']; ?>" alt=""></div>
       <p class="chat-message">

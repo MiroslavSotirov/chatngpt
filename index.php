@@ -23,26 +23,37 @@
     <title>Chat NON GPT</title>
     <link rel="stylesheet" href="style.css">
     <script>
-      function ajax(){
-        var req = new XMLHttpRequest();
-        req.onreadystatechange = function(){
-          if (req.readyState == 4 && req.status == 200){
-            document.getElementById('chat').innerHTML = req.responseText;
+      function ajax() {
+      var req = new XMLHttpRequest();
+      req.onreadystatechange = function() {
+        if (req.readyState == 4 && req.status == 200) {
+          var chatContainer = document.getElementById('chat');
+          var currentScrollPos = chatContainer.scrollTop;
+          var newChatLogs = req.responseText;
+          
+          // Create a temporary element to compare the new chat logs
+          var tempContainer = document.createElement('div');
+          tempContainer.innerHTML = newChatLogs;
+          
+          // Check if the new chat logs are different
+          if (tempContainer.innerHTML !== chatContainer.innerHTML) {
+            chatContainer.innerHTML = newChatLogs;
           }
+          
+          chatContainer.scrollTop = currentScrollPos; // Restore the scroll position
         }
-        req.open('GET', 'chat.php', true);
-        req.send();
-      }
-      setInterval(function(){ajax()}, 1000);
+      };
+      req.open('GET', 'chat.php', true);
+      req.send();
+    }
+
 
     </script>
 </head>
 <body onload="ajax();">
   <div class="container">
-    <div class="chatlogs">
-      <div id="chat" class="chat users">
-      
-      </div>
+    <div id="chatlogs" class="chatlogs">
+      <div id="chat" class="chat users"></div>
     </div>
     <form action="" class="chat-form" method="post">
       <textarea name="chat" placeholder="Enter message"></textarea>
