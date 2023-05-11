@@ -58,7 +58,7 @@
     <form action="" class="chat-form" method="post">
       <textarea name="chat" placeholder="Enter message"></textarea>
       <button type="submit" name="send">Send</button>
-      <a href="logout.php" class="logout_button">X</a>
+      <a href="logout.php" class="logout_button">Logout</a>
     </form>
   </div>
 
