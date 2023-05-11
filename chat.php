@@ -15,6 +15,7 @@
       'message' => $message
     );
   }
+  $chatLogs = array_reverse($chatLogs); // Reverse the order of chat logs
 ?>
 
 <div class="chatlogs">
