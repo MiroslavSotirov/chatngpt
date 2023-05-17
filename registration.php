@@ -15,6 +15,9 @@
     $image = $_FILES['photo']['name'];
     $target = 'images/' . basename($image);
 
+    $email_check_query = mysqli_query($con, "SELECT * FROM users WHERE email = '$email' LIMIT 1");
+    $email_check = mysqli_fetch_assoc($email_check_query);
+
     if (empty($username)){
       array_push($errors, 'Username is required');
     }
@@ -25,6 +28,10 @@
 
     if (strlen($password) < 8){
       array_push($errors, 'Password must contain at least 8 characters');
+    }
+
+    if ($email_check) {
+      array_push($errors, "Email already exists");
     }
 
     if (count($errors) == 0){
@@ -63,6 +70,7 @@
         <input type="email" name="email" placeholder="Enter email" required/>
         <p><?php if (in_array("Please enter a valid email address", $errors)){
           echo "Please enter a valid email address"; } ?></p>
+        <p><?php if (in_array("Email already exists", $errors)) { echo "Email already exists"; } ?></p>
         <input type="password" name="password" placeholder="Enter password" required/>
         <p><?php if (in_array("Password must contain at least 8 characters", $errors)){
           echo "Password must contain at least 8 characters"; } ?></p>
