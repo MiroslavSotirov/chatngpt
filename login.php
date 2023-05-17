@@ -39,17 +39,19 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="login-box">
-    <p><?php if (isset($_GET['msg'])) { echo $_GET['msg']; } ?></p>
-    <p><?php if (isset($login_error)) { echo $login_error; } ?></p>
-
-    <h1>Login</h1>
-    <form action="" method="POST">
-      <input type="text" name="email" placeholder="Enter email address" required/>
-      <input type="password" name="password" placeholder="Enter password" required/>
-      <input type="submit" name="submit" value="Login"/>
-      <a href="registration.php">Register</a>
-    </form>
+  <div class="login-container">
+    <div class="login-box">
+      <h1>Login</h1>
+      <form action="" method="POST">
+        <input type="text" name="email" placeholder="Enter email address" required/>
+        <input type="password" name="password" placeholder="Enter password" required/>
+        <input type="submit" name="submit" value="Login"/>
+        <a href="registration.php">Register</a>
+      </form>
+      <?php if (isset($login_error)) { ?>
+        <p class="error"><?php echo $login_error; ?></p>
+      <?php } ?>
+    </div>
   </div>
 </body>
 </html>
