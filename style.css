@@ -6,7 +6,7 @@
 }
 
 body {
-  background: url(images/chatgpt.jpg);
+  background: url(images/background.jpg);
   background-size: cover;
   background-position: center;
 }
@@ -167,6 +167,72 @@ body {
 }
 
 .login-box p.error {
+  color: #f00;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.registration-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.registration-box {
+  width: 300px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.registration-box h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.registration-box input[type="text"],
+.registration-box input[type="email"],
+.registration-box input[type="password"],
+.registration-box input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+.registration-box input[type="submit"] {
+  width: 100%;
+  padding: 10px 0;
+  background-color: #2ecc71;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.registration-box input[type="submit"]:hover {
+  background-color: #27ae60;
+}
+
+.registration-box a {
+  display: block;
+  text-align: center;
+  color: #999;
+  text-decoration: none;
+  margin-top: 15px;
+}
+
+.registration-box a:hover {
+  color: #555;
+}
+
+.registration-box p.error {
   color: #f00;
   text-align: center;
   margin-top: 15px;

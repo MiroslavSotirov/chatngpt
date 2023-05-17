@@ -10,8 +10,10 @@
     $username = mysqli_real_escape_string($con, $_POST['name']);
     $email = mysqli_real_escape_string($con, $_POST['email']);
     $password = mysqli_real_escape_string($con, $_POST['password']);
+
+
     $image = $_FILES['photo']['name'];
-    $target = 'images/'.basename($_FILES['photo']['name']);
+    $target = 'images/' . basename($image);
 
     if (empty($username)){
       array_push($errors, 'Username is required');
@@ -49,28 +51,26 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="login-box">
-    <h1>Register Here</h1>
-    <p><?php if (in_array("Registration failed, please try again", $errors)){
-    echo "Registration failed, please try again"; } ?></p>
-    <form action="" method="POST" enctype="multipart/form-data">
-        
-        <input type="text" name="name" placeholder="Enter username">
+  <div class="registration-container">
+    <div class="registration-box">
+      <h1>Register Here</h1>
+      <p><?php if (in_array("Registration failed, please try again", $errors)){
+        echo "Registration failed, please try again"; } ?></p>
+      <form action="" method="POST" enctype="multipart/form-data">
+        <input type="text" name="name" placeholder="Enter username" required/>
         <p><?php if (in_array("Username is required", $errors)){
-        echo "Username is required"; } ?></p>
-        
-        <input type="email" name="email" placeholder="Enter Email">
+          echo "Username is required"; } ?></p>
+        <input type="email" name="email" placeholder="Enter email" required/>
         <p><?php if (in_array("Please enter a valid email address", $errors)){
-        echo "Please enter a valid email address"; } ?></p>
-        
-        <input type="password" name="password" placeholder="Enter password">
+          echo "Please enter a valid email address"; } ?></p>
+        <input type="password" name="password" placeholder="Enter password" required/>
         <p><?php if (in_array("Password must contain at least 8 characters", $errors)){
-        echo "Password must contain at least 8 characters"; } ?></p>
-
-        <input type="file" name="photo">
-        <input type="submit" name="submit" value="Join">
+          echo "Password must contain at least 8 characters"; } ?></p>
+        <input type="file" name="photo" required/>
+        <input type="submit" name="submit" value="Join"/>
         <a href="login.php">Already Registered</a>
       </form>
+    </div>
   </div>
 </body>
 </html>

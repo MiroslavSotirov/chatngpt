@@ -21,7 +21,9 @@
 <div class="chatlogs">
   <?php foreach ($chatLogs as $log) { ?>
     <div class="chat users">
-      <div class="user-photo"><img src="image/<?php echo $log['user_image']; ?>" alt=""></div>
+      <div class="user-photo">
+        <img src="images/<?php echo $log['user_image']; ?>" alt="">
+      </div>
       <p class="chat-message">
         <span style="color:#9a5803; font-size:14px;"><?php echo $log['name']; ?></span><br>
         <?php echo $log['message']; ?>
