@@ -31,16 +31,14 @@
           var currentScrollPos = chatContainer.scrollTop;
           var newChatLogs = req.responseText;
           
-          // Create a temporary element to compare the new chat logs
           var tempContainer = document.createElement('div');
           tempContainer.innerHTML = newChatLogs;
           
-          // Check if the new chat logs are different
           if (tempContainer.innerHTML !== chatContainer.innerHTML) {
             chatContainer.innerHTML = newChatLogs;
           }
           
-          chatContainer.scrollTop = currentScrollPos; // Restore the scroll position
+          chatContainer.scrollTop = currentScrollPos;
         }
       };
       req.open('GET', 'chat.php', true);
