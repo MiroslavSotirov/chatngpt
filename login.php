@@ -5,25 +5,30 @@
     $email = mysqli_real_escape_string($con, $_POST['email']);
     $password = mysqli_real_escape_string($con, $_POST['password']);
 
-    $query = mysqli_query($con, "SELECT * FROM users WHERE email = '$email'");
+    // Retrieve user data from the database based on the email
+    $query = mysqli_prepare($con, "SELECT id, password FROM users WHERE email = ?");
+    mysqli_stmt_bind_param($query, "s", $email);
+    mysqli_stmt_execute($query);
+    $result = mysqli_stmt_get_result($query);
 
-    if($rows = mysqli_fetch_assoc($query)){
-      $db_id = $rows['id'];
-      $db_pass = $rows['password'];
+    if($row = mysqli_fetch_assoc($result)){
+      $db_id = $row['id'];
+      $db_pass = $row['password'];
 
-      $hashed_pwd = password_verify($password, $db_pass);
-
-      if ($hashed_pwd) {
+      // Verify the hashed password
+      if (password_verify($password, $db_pass)) {
         session_start();
 
         $_SESSION['id'] = $db_id;
         header("location: index.php");
+        exit();
       } else {
+        $login_error = 'Email address or password is incorrect';
+      }
+    } else {
       $login_error = 'Email address or password is incorrect';
     }
   }
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -40,10 +45,11 @@
 
     <h1>Login</h1>
     <form action="" method="POST">
-      <input type="text" name="email" placeholder="Enter email address"/>
-      <input type="password" name="password" placeholder="Enter password"/>
+      <input type="text" name="email" placeholder="Enter email address" required/>
+      <input type="password" name="password" placeholder="Enter password" required/>
       <input type="submit" name="submit" value="Login"/>
       <a href="registration.php">Register</a>
+    </form>
   </div>
 </body>
 </html>
