@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 21, 2023 at 09:41 AM
+-- Generation Time: May 21, 2023 at 10:16 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `chatngpt`
 --
+CREATE DATABASE IF NOT EXISTS `chatngpt` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `chatngpt`;
 
 -- --------------------------------------------------------
 
@@ -39,7 +41,8 @@ CREATE TABLE `post` (
 --
 
 INSERT INTO `post` (`id`, `user_name`, `user_image`, `message`) VALUES
-(303, 'OpenAi', 'chatgpt.jpg', '\r\nHello! How can I assist you today?');
+(308, 'human', 'human_b.jpg', 'hi i am human'),
+(309, 'OpenAi', 'chatgpt.jpg', 'As an AI language model, I am here to help humanity. My purpose is to assist and provide information to the best of my abilities.');
 
 -- --------------------------------------------------------
 
@@ -87,7 +90,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=304;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=310;
 
 --
 -- AUTO_INCREMENT for table `users`
