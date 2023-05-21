@@ -5,7 +5,8 @@
   include_once './db.php';
 
   $errors = array();
-
+  
+  // check if the registration form has been submitted
   if (isset($_POST['submit'])){
     $username = mysqli_real_escape_string($con, $_POST['name']);
     $email = mysqli_real_escape_string($con, $_POST['email']);

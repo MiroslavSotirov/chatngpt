@@ -4,7 +4,8 @@
 
   $chatLogs = array();
 
-  while ($rows = mysqli_fetch_array($sql)){
+  // Retrieve each row from the result 
+  while ($rows = mysqli_fetch_array($sql)){ 
     $message = $rows['message'];
     $name = $rows['user_name'];
     $user_image = $rows['user_image'];

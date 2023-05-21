@@ -1,6 +1,7 @@
 <?php
   include_once 'db.php';
 
+  // verify the user is logged in
   if (!isset($_SESSION['id'])){
     header('location: login.php');
   }
@@ -23,6 +24,7 @@
     <title>Chat NON GPT</title>
     <link rel="stylesheet" href="style.css">
     <script>
+      // retrieve updated chat logs
       function ajax() {
       var req = new XMLHttpRequest();
       req.onreadystatechange = function() {
@@ -61,6 +63,7 @@
   </div>
 
   <?php 
+    // check if the form has been submitted and if the chat message is not empty
     if (isset($_POST['send']) && !empty($_POST['chat'])) {
       $msg = $_POST['chat'];
 
